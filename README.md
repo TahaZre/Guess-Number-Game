@@ -1,1 +1,1 @@
-GuessGame.Solution
+Simple Guess Number Game in C# ( CSharp )
