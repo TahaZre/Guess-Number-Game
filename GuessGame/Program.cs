@@ -1,42 +1,36 @@
-﻿Random random = new Random();
-int randomNumber = random.Next(10, 100);
-Console.WriteLine("Enter a number between 10 to 99");
-var countGuess = 7;
+bool isCorrectNumber = false;
+Random random = new Random();
+int randomNumber = random.Next(10, 101);
+Console.WriteLine("please enter a number between 10-100");
 
-for (int i = 0; i <= countGuess; i++)
+while (!isCorrectNumber)
 {
-    int randomnuber1 = int.Parse(Console.ReadLine());
-    if (countGuess <= 7)
-    {
-      
-        if (randomNumber == randomnuber1 && countGuess <= 7)
-        {
-            Console.WriteLine("congratulations you win :)");
-            Console.ReadKey();
-        }
-        else if (randomNumber > randomnuber1)
-        {
-            Console.WriteLine("NOPE! Say it higher");
-        }
-        else if(randomNumber < randomnuber1)
-        {
-            Console.WriteLine("NOPE! Say it lower");
-        }
+    int guess = Convert.ToInt32(Console.ReadLine());
 
-        if (Math.Abs(randomNumber - randomnuber1) < 10 && randomNumber != randomnuber1)
+        if (guess == randomNumber)
         {
-            Console.WriteLine("too close ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("you win :) ");
+            Console.ResetColor();
+            isCorrectNumber = true;
+        }else if (guess < randomNumber)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("say higher number ");
+            Console.ResetColor();
         }
-    }
-
-    else  
-    {
-        Console.WriteLine("Sorry You Lose :/");
-        Console.ReadKey();
-        break;
-    }
-   
+        else if (guess > randomNumber)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("say lower number ");
+            Console.ResetColor();
+        }
+        else if (Math.Abs(randomNumber - guess) < 10 && randomNumber != guess)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("to close");
+            Console.ResetColor();
+        }
 }
-
 
 Console.ReadKey();
